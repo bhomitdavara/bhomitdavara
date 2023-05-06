@@ -1,0 +1,49 @@
+<% comments.each do |comment| %>
+  <div class='comment'>
+  <% if comment.admin? %>
+    <div>
+      <b>Admin</b>
+      <span style="float:right;"><%= link_to "Delete", delete_comment_admin_post_path(comment_id: comment.id), data: { method: :delete, id: comment } %></span>
+    </div>
+  <% elsif comment.user? %>
+    <div>
+      <b><%= link_to comment.user.email, admin_user_path(comment.user) %></b>
+      <span style="float:right;"><%= link_to "Delete", delete_comment_admin_post_path(comment_id: comment.id), data: { method: :delete, id: comment } %></span>
+    </div>
+  <% end %>
+    <%= comment.discription %>
+    <span class='time-span'><%= time_ago_in_words(comment.created_at)%></span><br/><br/>
+
+    <%= form_with  url: admin_sub_comments_path, class:'form-comment-reply' do |form| %>
+
+      <div class='comment-form-reply' id="<%= dom_id(comment) %>">
+        <%= form.text_area :discription, placeholder: 'Comment...', class: 'comment-reply',id: 'comment-reply' %>
+        <%= form.hidden_field :comment_id , value: comment.id %>
+        <%= form.submit 'Comment', id: 'comment-button-reply' %> 
+      </div>  
+    <% end %>
+
+
+    <div class='sub-comments'>
+      <% if comment.sub_comments.present? %>
+        <% subComments = comment.sub_comments.where(is_active: true) %>
+        <% subComments.each do |subComment| %>
+        <div class='sub-comment'>
+          <div><b><%= link_to subComment.user.email, admin_user_path(subComment.user) %></b>
+            <span style="float:right;"><%= link_to "Delete", delete_comment_admin_post_path(subComment_id: subComment.id), data: { method: :delete, id: subComment } %></span>
+          </div>
+          <%= subComment.discription %>
+          <span class='time-span'><%= time_ago_in_words(subComment.created_at) %></span>
+        </div><br/>
+        <% end %>
+      <% end %>
+    </div>
+  </div><br />
+<% end %>
+
+<script>
+  function comment_reply(object) {
+   let commentId = object.getAttribute("comment_id")
+   document.getElementById('comment_'+commentId).style.display = 'revert' 
+  }
+</script>

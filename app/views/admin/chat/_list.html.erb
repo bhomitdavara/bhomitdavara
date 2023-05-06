@@ -1,0 +1,7 @@
+<div class='active-admin-chat__conversations-list-container'>
+  <h3 class='active-admin-chat__title'><%= ActiveAdmin::Chat.conversation_relation_name.pluralize.capitalize %></h3>
+  <%= text_field_tag :search, params[:search], class: "form-control", placeholder: "Search User here" %>
+  <ul class='active-admin-chat__conversations-list'>
+    <%= render 'chat_list', conversations: @conversations %>
+  </ul>
+</div>

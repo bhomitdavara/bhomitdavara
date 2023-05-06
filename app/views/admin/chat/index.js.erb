@@ -1,0 +1,4 @@
+var chat_list = document.getElementsByClassName("active-admin-chat__conversations-list");
+for (var i = 0; i < chat_list.length; i++) {
+  chat_list[i].innerHTML = `<%= render 'chat_list', conversations: @conversations %>`;
+}

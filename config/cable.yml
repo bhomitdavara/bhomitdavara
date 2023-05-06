@@ -1,0 +1,17 @@
+development:
+  adapter: redis
+  url: redis://localhost:6379/1
+
+test:
+  adapter: test
+
+staging:
+  adapter: redis
+  # url: redis://127.0.0.1:6379/1
+  url: redis://red-cg83h4t269vf27ecpb7g:6379
+  channel_prefix: khedutmall_rails_staging
+
+production:
+  adapter: redis
+  url: redis://127.0.0.1:6379/1
+  channel_prefix: khedutmall_rails_production

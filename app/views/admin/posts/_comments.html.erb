@@ -1,0 +1,17 @@
+<div class='admin-comment'>
+  <div class='comments'>
+    <%= render partial: 'comments_index', locals: { comments: @comments } %><br /><br /> 
+  </div> 
+  <%= form_with  url: create_comment_admin_post_path(post,comment) do |form| %>  
+    <div class='comment-form'>
+      <%= form.text_area :discription, placeholder: 'Comment...', id:'comment-description', oninput: "auto_grow(this)", required: true %>
+      <%= form.submit 'Comment', id:'comment-button' %> 
+    </div>  
+  <% end %>
+</div>
+<script>
+ function auto_grow(comment_element) {
+    comment_element.style.height = "1px";
+    comment_element.style.height = (1+comment_element.scrollHeight)+"px";
+  }
+</script>

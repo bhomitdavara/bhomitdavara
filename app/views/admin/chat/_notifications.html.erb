@@ -1,0 +1,5 @@
+<% unread_count = conversation.notifications_as_conversation.where(type: MessageNotification.name,
+                                                             recipient_type: "AdminUser").unread.count %>
+<% if unread_count > 0 %>
+  <%= "+ #{unread_count}" %>
+<% end %>

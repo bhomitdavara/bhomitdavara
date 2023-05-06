@@ -1,0 +1,15 @@
+<% conversations.each do |conversation| %>
+  <div class='chat-name-notification-block'>
+  <a href='<%= "/#{ActiveAdmin::Chat.namespace}/#{ActiveAdmin::Chat.page_name}/#{conversation.id}" %>' >
+    <li id='conversation-<%= conversation.id %>' class='active-admin-chat__conversation-item <%= selected_class(conversation, active_conversation) %>'>
+      <%#= conversation.public_send(:"#{ActiveAdmin::Chat.user_relation_name}").email %>
+      <%= conversation.name %>
+      <% if @unread_conversation_id.include?(conversation.id) %>
+        <span id="notification_count_<%= conversation.id %>", class = "notification_count">
+          <%= render 'admin/chat/notifications', conversation: conversation %>
+        </span>
+      <% end %>
+    </li>
+  </a>
+  </div>
+<% end %>

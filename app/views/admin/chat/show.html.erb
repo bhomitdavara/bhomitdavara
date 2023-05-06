@@ -1,0 +1,51 @@
+<div class='active-admin-chat__chat'>
+  <%= render partial: 'admin/chat/list' %>
+
+  <div class='active-admin-chat__conversation-history-container'>
+    <div class='active-admin-chat__conversation-history'>
+      <% if active_conversation && messages.empty? %>
+        <div class='active-admin-chat__conversation-history no-messages'>No messages yet</div>
+      <% else %>
+        <%= render partial: "message", collection: @messages %>
+        <%#= render partial: 'admin/chat/messages', locals: { messages: @messages } %>
+      <% end %>
+    </div>
+    <div class='active-admin-chat__send-message-container' id='send-message-container'>
+      <textarea id='send-message' name="comment" placeholder='Send Message' oninput="auto_grow(this)"></textarea>
+      <%= form_with url: admin_messages_path(conversation_id: @conversation.id), class: 'form-send' do |f| %>
+        <%= f.file_field :attachements, multiple: true, class: 'select-file' %>
+        <%= f.submit 'send', class: 'send-file', id: 'send-file', data: { disable_with: 'Processing...' } %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<%#= javascript_pack_tag 'activeadmin-chat' %>
+<script>
+  function auto_grow(send_message_element) {
+    send_message_element.style.height = "1px";
+    send_message_element.style.height = (1+send_message_element.scrollHeight)+"px";
+
+    send_message_container_element = document.getElementById("send-message-container")
+    send_message_container_element.style.height = "1px";
+    send_message_container_element.style.height = (8+send_message_container_element.scrollHeight)+"px";
+
+    main_content_element=document.getElementById("main_content")
+    main_content_element.style.height = "1px";
+    main_content_element.style.height = (5+main_content_element.scrollHeight)+"px";
+  }
+
+  var input = document.getElementById("send-message");
+  input.addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+     event.preventDefault();
+      add(document.getElementById("send-message"),52)
+      add(document.getElementById("send-message-container"), 61)
+      add(document.getElementById("main_content"), 665)
+    }
+  });
+
+  function add(event, range){
+    event.style.height = "1px";
+    event.style.height = range+"px";
+  }
+</script>

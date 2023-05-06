@@ -1,0 +1,20 @@
+<div class = 'main'>
+<h2><%= image_tag 'logo.svg', size: '50x50' %> <span> About Khedutmall App </span></h2>
+<div class='about'><%= @content.html_safe %></div>
+</div>
+<style>
+  img{
+    background-color: green;
+  }
+
+  .about{
+    margin: 0px 550px;
+    color: black;
+    font-size: 17px;
+  }
+
+  h2{
+    color: #000000;
+    text-align: center;
+  }
+</style>

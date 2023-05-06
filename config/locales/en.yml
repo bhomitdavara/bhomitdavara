@@ -1,0 +1,107 @@
+en:
+  hello: "Hello world"
+  admin:
+    approv: "Admin approved your post"
+    reject: "Admin reject your post"
+  user:
+    create:
+      message: "OTP send successfully"
+    verify_otp:
+      message: "OTP verify successfully"
+      error: "You entered incorrect otp, please try again."
+    dropdown_option:
+      message: "Dropdown list"
+    update:
+      message: "Successfully updated"
+    show:
+      message: "User fetch successfully"
+      error: "User not found"
+    validation:
+      image: "Type is invalid. Please select png, jpeg and jpg"
+  crop:
+    index:
+      message: "list all Crop Categories and their crops"
+    bad_request: "Missing parameter crop id"
+  post:
+    index:
+      message: "Post fetched successfully"
+      error: "No Post available"
+    create: 
+      message: "Post Creating take some time so you will get notification whenever post create"
+      success: "Your Post created successfully"
+    update:
+      success: "Your post updated successfully"
+      message: "Your post updating in some time"
+      error: "you can't update approved post"
+    crop_wise_post:
+      message: "Crop id is require"
+    destroy:
+      message: "Post destroy succesfully"
+      error: "Post Not found"
+    check: 
+      message: 'Admin has blocked you! please contact the admin'
+  comment:
+    index:
+      message: "Comment fetched successfully"
+      error: "No Comment available"
+    create:
+      message: "Comment Successfully created "
+    destroy:
+      message: "Comment destroy succesfully"
+      error: "Comment Not found"
+      error1: "Sub Comment not found"
+  like:
+    create:
+      message: "LIKE Successfully created"
+  p_type:
+    message: "Product Type fetch successfully"
+    error: "No Product Type available"
+  product:
+    message: "Product fetch successfully"
+    error: "No Product available"
+    tag_error: "Tags parameter is missing"
+  problem:
+    index:
+      message: "Problems fetched successfully"
+      error: "No Problems available"
+    show: 
+      message: "Problem & their solution fetch successfully"
+  fertilizer:
+    message: "Fertilizer Schedule fetch successfully"
+    error: "No Fertilizer Schedule available"
+  feedback:
+    create:
+      message: "Feedback successfully given"
+  complaint: 
+    create:
+      message: "Complaint successfully added"
+  message:
+    index:
+      msg: "Fetch all messages"
+      error: "No Messages"
+    create:
+      msg: "Message sucessfully created"
+  exception:
+    401:
+      message: "You are not authorized"
+    404:
+      message: "The requested endpoint doesn't exist"
+
+  errors:
+    messages:
+      blank: "Can't be blank"
+      invalid: "Is invalid"
+
+  activerecord:
+    errors:
+      messages:
+        max_file: "Total number file is out of range, you can only upload at a time 5 file"
+        too_large_v: "Video is too large, Please upload video under 40mb size"
+        too_large: "Image is too large, Please upload image under 5mb size"
+        bad_profile: "Type is invalid. Please select png, jpeg and jpg"
+        bad_post: "Type is invalid. Please select png, jpeg and jpg or video"
+        bad_tags: "Please select Tag in crop id"
+        bad_problem_tags: "Please select Tag in product id"
+        bad_product_tags: "Please select Tag in product id"
+        all_blank: "Post id, Commnet id and Sub commnet id all can't be blank"
+        bad_message: "Content or attachement both can't be empty"

@@ -1,0 +1,20 @@
+<div id="message-<%= message.id %>" data-time="<%= message.created_at.iso8601(3) %>" class="active-admin-chat__message-container <%= admin_class(message) %>">
+  <div>
+  <% if message.attachements.attached? %>
+    <p>
+      <% message_urls = message.attachements_url %>
+      <% message_urls[:images].each do |img| %>
+        <%= link_to image_tag(img, size: '250x200'), img %><br>
+      <% end %>
+      <% message_urls[:videos].each do |video| %>
+        <%= video_tag(video, controls: true, size: '300x200') %><br>
+      <% end %>
+      <% message_urls[:audio].each do |a| %>
+        <%= audio_tag(a, controls: true) %><br>
+      <% end %>
+    </p>
+  <% else %>
+    <p><%= message.content %></p>
+  <% end %>
+  </div>
+</div>
